@@ -39,6 +39,12 @@
         android:padding="4dp"
         android:textColor="#388E3C" />
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Buscar dicas..." />
+
     <!-- RecyclerView para exibir as dicas -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
