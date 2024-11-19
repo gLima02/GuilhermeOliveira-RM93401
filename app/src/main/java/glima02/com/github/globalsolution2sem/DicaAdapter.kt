@@ -7,11 +7,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import glima02.com.github.globalsolution2sem.model.Dica
 
-class DicaAdapter(private val dicas: List<Dica>) : RecyclerView.Adapter<DicaAdapter.DicaViewHolder>() {
+class DicaAdapter(
+    private val dicas: List<Dica>,
+    private val onItemClick: (Dica) -> Unit // Callback para cliques no item
+) : RecyclerView.Adapter<DicaAdapter.DicaViewHolder>() {
 
     class DicaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tituloDica: TextView = itemView.findViewById(R.id.tituloDica)
-        val descricaoDica: TextView = itemView.findViewById(R.id.descricaoDica)
+        private val titulo: TextView = itemView.findViewById(R.id.tituloDica)
+        private val descricao: TextView = itemView.findViewById(R.id.descricaoDica)
+
+        fun bind(dica: Dica, onItemClick: (Dica) -> Unit) {
+            titulo.text = dica.titulo
+            descricao.text = dica.descricao
+
+            // Configura o listener de clique no item
+            itemView.setOnClickListener {
+                onItemClick(dica)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DicaViewHolder {
@@ -20,12 +33,9 @@ class DicaAdapter(private val dicas: List<Dica>) : RecyclerView.Adapter<DicaAdap
     }
 
     override fun onBindViewHolder(holder: DicaViewHolder, position: Int) {
-        val dica = dicas[position]
-        holder.tituloDica.text = dica.titulo
-        holder.descricaoDica.text = dica.descricao
+        holder.bind(dicas[position], onItemClick)
     }
 
-    override fun getItemCount(): Int {
-        return dicas.size
-    }
+    override fun getItemCount() = dicas.size
 }
+
