@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#E8F5E9">
+
+    <!-- Título da dica -->
+    <TextView
+        android:id="@+id/tituloDica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Título da Dica"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#388E3C" />
+
+    <!-- Descrição da dica -->
+    <TextView
+        android:id="@+id/descricaoDica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição breve da dica"
+        android:textSize="16sp"
+        android:textColor="#4CAF50"
+        android:layout_marginTop="4dp" />
+</LinearLayout>
