@@ -20,7 +20,6 @@ class DicaAdapter(
             titulo.text = dica.titulo
             descricao.text = dica.descricao
 
-            // Configura o listener de clique no item
             itemView.setOnClickListener {
                 onItemClick(dica)
             }

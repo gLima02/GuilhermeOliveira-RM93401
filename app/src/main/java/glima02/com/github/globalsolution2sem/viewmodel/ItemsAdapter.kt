@@ -18,15 +18,12 @@ class ItemsAdapter(private val onItemRemoved: (ItemModel) -> Unit) :
 
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        // Referências para as views de cada item.
         val textView = view.findViewById<TextView>(R.id.textViewItem)
         val button = view.findViewById<ImageButton>(R.id.imageButton)
 
 
         fun bind(item: ItemModel) {
-            // Define o texto do TextView para o nome do item.
             textView.text = item.name
-            // Define um listener para o botão, que chama o callback onItemRemoved quando clicado
             button.setOnClickListener {
                 onItemRemoved(item)
             }

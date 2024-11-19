@@ -23,18 +23,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Dados de exemplo
         val dicas = listOf(
             Dica("Use lâmpadas LED", "Elas consomem menos energia e duram mais."),
             Dica("Desligue aparelhos que não estão em uso", "Aparelhos consomem energia mesmo em standby."),
             Dica("Reutilize água da chuva", "Economize água potável usando água da chuva para tarefas.")
         )
 
-        // Configuração da RecyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Configura o adapter com o callback de clique
         recyclerView.adapter = DicaAdapter(dicas) { dica ->
             // Exibe um Toast com mais detalhes da dica
             Toast.makeText(
@@ -45,52 +42,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-    /*
-    private lateinit var viewModel: ItemsViewModel
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "Ecodicas"
-
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val itemsAdapter = ItemsAdapter { item ->
-            viewModel.removeItem(item)
-        }
-        recyclerView.adapter = itemsAdapter
-
-        val button = findViewById<Button>(R.id.button)
-        val editText = findViewById<EditText>(R.id.editText)
-
-        button.setOnClickListener {
-            if (editText.text.isEmpty()) {
-                editText.error = "Adicione uma dica sustentável"
-                return@setOnClickListener
-            }
-
-            viewModel.addItem(editText.text.toString())
-            editText.text.clear()
-        }
-
-        val viewModelFactory = ItemsViewModelFactory(application)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ItemsViewModel::class.java)
-
-        viewModel.itemsLiveData.observe(this) { items ->
-            itemsAdapter.updateItems(items)
-        }
-    }
-    */
